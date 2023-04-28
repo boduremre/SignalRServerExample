@@ -15,5 +15,15 @@ namespace SignalRServerExample.Hubs
                 await Clients.All.SendAsync("ReceiveMessage", "Lütfen mesaj giriniz.");
             }
         }
+
+        public override Task OnConnectedAsync()
+        {
+            return base.OnConnectedAsync();
+        }
+
+        public override Task OnDisconnectedAsync(Exception exception)
+        {
+            return base.OnDisconnectedAsync(exception);
+        }
     }
 }
