@@ -18,11 +18,15 @@ namespace SignalRServerExample.Hubs
 
         public override Task OnConnectedAsync()
         {
+            // bağlanan clienta atanan uniqe id bilgisi
+            string id = Context.ConnectionId;
             return base.OnConnectedAsync();
         }
 
         public override Task OnDisconnectedAsync(Exception exception)
         {
+            // bağlantısı kopan veya bağlantıyı kapatan clienta atanan uniqe id bilgisi
+            string id = Context.ConnectionId;
             return base.OnDisconnectedAsync(exception);
         }
     }
