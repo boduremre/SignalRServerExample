@@ -1,3 +1,4 @@
+using SignalRServerExample.Business;
 using SignalRServerExample.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSignalR();
+builder.Services.AddTransient<MyBusiness>();
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(
@@ -30,9 +33,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
 
 // UseCors must be called before MapHub.
